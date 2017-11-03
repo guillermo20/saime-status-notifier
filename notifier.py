@@ -2,7 +2,6 @@ import urllib2
 import time
 import emails
 import smtplib
-import ssl
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
@@ -13,9 +12,7 @@ def internet_on():
         # know that the site is down
         urllib2.urlopen('https://tramites.saime.gob.ve', timeout=20)
         return True
-    except urllib2.URLError as err:
-        return False
-    except ssl.SSLError as err:
+    except Exception as err:
         return False
 
 
