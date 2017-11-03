@@ -2,6 +2,7 @@ import urllib2
 import time
 import emails
 import smtplib
+import ssl
 from email.MIMEMultipart import MIMEMultipart
 from email.MIMEText import MIMEText
 
@@ -10,9 +11,11 @@ def internet_on():
     try:
         # as of november the third, saime is throwing code 503 to let the user
         # know that the site is down
-        urllib2.urlopen('https://tramites.saime.gob.ve', timeout=60)
+        urllib2.urlopen('https://tramites.saime.gob.ve', timeout=20)
         return True
     except urllib2.URLError as err:
+        return False
+    except ssl.SSLError as err:
         return False
 
 
