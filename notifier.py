@@ -21,7 +21,6 @@ def send_emails():
     server.starttls()
     server.login(emails.sender_email, emails.sender_password)
     msg = MIMEMultipart()
-    # the subject is setted just to add more context
     msg['Subject'] = "Saime status service"
     body = "Saime is active!"
     msg.attach(MIMEText(body, 'plain'))
